@@ -7,6 +7,14 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    colors: {
+      main: "#0d1821",
+      secondary: "#344966",
+      headerFont: "#e6aace",
+      contrastBG: "#f0f4ef",
+      headerTwo: "#bfcc94",
+      nav: "#182937",
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -14,6 +22,8 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
+
+    fontFamily: { inter: "Inter" },
   },
   plugins: [],
 };
