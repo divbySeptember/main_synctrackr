@@ -1,4 +1,4 @@
-import Sidenav from "../sidenav/sidenav";
+import Sidenav from "./sidenav/sidenav";
 
 export default function DashLayout({
   children,
