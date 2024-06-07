@@ -1,34 +1,25 @@
 "use client";
-import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import Dashlinks from "./dashlinks";
 
-import { Fragment } from "react";
+//
 import {
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
   Menu,
   MenuButton,
-  MenuItem,
-  MenuItems,
-  Transition,
 } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { UserButton, useUser } from "@clerk/nextjs";
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard", current: true },
-  { name: "Team", href: "/dashboard/team", current: false },
-  { name: "Projects", href: "#", current: false },
+  { name: "Financial", href: "/dashboard/financial", current: false },
+  { name: "Sync", href: "/dashboard/sync", current: false },
+  { name: "Briefs", href: "/dashboard/briefs", current: false },
+  { name: "Library", href: "/dashboard/library", current: false },
+  { name: "Contacts", href: "/contacts", current: false },
   { name: "Calendar", href: "#", current: false },
-  { name: "Reports", href: "#", current: false },
-];
-const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
 ];
 
 const user = {
@@ -94,39 +85,11 @@ const Sidenav = () => {
                     <Menu as="div" className="relative ml-3">
                       <div>
                         <MenuButton className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                          <span className="absolute -inset-1.5" />
-                          <span className="sr-only">Open user menu</span>
                           <div className=" border-contrastBG border rounded-full">
                             <UserButton afterSignOutUrl="/" />
                           </div>
                         </MenuButton>
                       </div>
-                      <Transition
-                        enter="transition ease-out duration-100"
-                        enterFrom="transform opacity-0 scale-95"
-                        enterTo="transform opacity-100 scale-100"
-                        leave="transition ease-in duration-75"
-                        leaveFrom="transform opacity-100 scale-100"
-                        leaveTo="transform opacity-0 scale-95"
-                      >
-                        <MenuItems className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                          {userNavigation.map((item) => (
-                            <MenuItem key={item.name}>
-                              {({ focus }) => (
-                                <a
-                                  href={item.href}
-                                  className={classNames(
-                                    focus ? "bg-gray-100" : "",
-                                    "block px-4 py-2 text-sm text-gray-700"
-                                  )}
-                                >
-                                  {item.name}
-                                </a>
-                              )}
-                            </MenuItem>
-                          ))}
-                        </MenuItems>
-                      </Transition>
                     </Menu>
                   </div>
                 </div>
@@ -167,7 +130,7 @@ const Sidenav = () => {
               <div className="border-t border-main pb-3 pt-4">
                 <div className="flex items-center px-5">
                   <div className="flex-shrink-0">
-                    <UserButton afterSignOutUrl="/" />
+                    <UserButton afterSignOutUrl="/" afterSwitchSessionUrl="/" />
                   </div>
                   <div className="ml-3">
                     <div className="text-base font-medium leading-none text-contrastBG">
@@ -191,6 +154,14 @@ const Sidenav = () => {
           </>
         )}
       </Disclosure>
+
+      <div className="min-h-full">
+        <header className="bg-contrastBG shadow">
+          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            <h1 className="text-3xl font-bold text-main">Dashboard</h1>
+          </div>
+        </header>
+      </div>
     </div>
   );
 };

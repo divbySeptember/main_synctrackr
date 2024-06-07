@@ -6,8 +6,8 @@ export default function DashLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section>
-      <nav className="">
+    <section className=" h-screen bg-contrastBG">
+      <nav className=" ">
         <Sidenav />
       </nav>
       {children}

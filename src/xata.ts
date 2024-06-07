@@ -6,7 +6,26 @@ import type {
   XataRecord,
 } from "@xata.io/client";
 
-const tables = [{ name: "folders", columns: [] }] as const;
+const tables = [
+  { name: "folders", columns: [] },
+  {
+    name: "users",
+    columns: [
+      { name: "username", type: "string" },
+      { name: "password", type: "string", unique: true },
+      { name: "FullName", type: "string" },
+    ],
+  },
+  {
+    name: "userContacts",
+    columns: [
+      { name: "cName", type: "string" },
+      { name: "cEmail", type: "string" },
+      { name: "cBusiness", type: "string" },
+      { name: "Cdeal", type: "bool", notNull: true, defaultValue: "false" },
+    ],
+  },
+] as const;
 
 export type SchemaTables = typeof tables;
 export type InferredTypes = SchemaInference<SchemaTables>;
@@ -14,8 +33,16 @@ export type InferredTypes = SchemaInference<SchemaTables>;
 export type Folders = InferredTypes["folders"];
 export type FoldersRecord = Folders & XataRecord;
 
+export type Users = InferredTypes["users"];
+export type UsersRecord = Users & XataRecord;
+
+export type UserContacts = InferredTypes["userContacts"];
+export type UserContactsRecord = UserContacts & XataRecord;
+
 export type DatabaseSchema = {
   folders: FoldersRecord;
+  users: UsersRecord;
+  userContacts: UserContactsRecord;
 };
 
 const DatabaseClient = buildClient();

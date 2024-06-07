@@ -21,14 +21,11 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className="bg-main  ">
+          <Navbar />
           <div className={inter.className} />
-          <main className="">
-            <Navbar />
-            {children}
-          </main>
+          <main>{children}</main>
         </body>
       </html>
     </ClerkProvider>
   );
 }
-// export default function RootLayout({
